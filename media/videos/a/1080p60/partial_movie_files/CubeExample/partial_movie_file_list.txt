@@ -1,0 +1,9 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/a/1080p60/partial_movie_files/CubeExample/31246113_3315967912_1589820864.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/a/1080p60/partial_movie_files/CubeExample/208801316_329969645_3370344847.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/a/1080p60/partial_movie_files/CubeExample/208801316_3837998516_520255747.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/a/1080p60/partial_movie_files/CubeExample/208801316_3837998516_2482549605.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/a/1080p60/partial_movie_files/CubeExample/208801316_1829436179_3208811821.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/a/1080p60/partial_movie_files/CubeExample/208801316_3213241947_3870046650.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/a/1080p60/partial_movie_files/CubeExample/208801316_3842571971_1400600225.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/a/1080p60/partial_movie_files/CubeExample/208801316_3213241947_3897144074.mp4'

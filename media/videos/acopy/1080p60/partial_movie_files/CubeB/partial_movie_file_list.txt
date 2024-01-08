@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/3449541421_653165941_1778797224.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/2447526981_4198387966_2775439560.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/990063647_4198387966_325870611.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/1898568979_4198387966_4210284485.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/3120871994_4198387966_136246485.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/4150859707_2018625259_2310641802.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/3248232846_4198387966_1136286787.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/3401220108_4198387966_2472799566.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/1832848249_4198387966_2313443283.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/3703632330_4198387966_1874630545.mp4'
+file 'file:C:/Users/hp/Downloads/Video3/media/videos/acopy/1080p60/partial_movie_files/CubeB/3340704345_4198387966_2514152538.mp4'
