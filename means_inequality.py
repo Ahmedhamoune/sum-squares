@@ -89,11 +89,11 @@ class MeansInequality(Scene):
         qm_tok = MathTex("\\mathrm{QM}", color=qm_color)
         a_tok = MathTex("a", color=WHITE)
 
-        lt1 = MathTex("<", color=WHITE)
-        lt2 = MathTex("<", color=WHITE)
-        lt3 = MathTex("<", color=WHITE)
-        lt4 = MathTex("<", color=WHITE)
-        lt5 = MathTex("<", color=WHITE)
+        lt1 = MathTex("\\leq", color=WHITE)
+        lt2 = MathTex("\\leq", color=WHITE)
+        lt3 = MathTex("\\leq", color=WHITE)
+        lt4 = MathTex("\\leq", color=WHITE)
+        lt5 = MathTex("\\leq", color=WHITE)
 
         chain = VGroup(
             b_tok, lt1, hm_tok, lt2, gm_tok, lt3, am_tok, lt4, qm_tok, lt5, a_tok
