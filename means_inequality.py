@@ -202,3 +202,106 @@ class MeansInequality(Scene):
         self.play(*[MoveToTarget(m) for m in elements], run_time=0.8)
 
         self.wait(2.0)
+
+
+class VerticalSquares(Scene):
+    def construct(self) -> None:
+        self.camera.background_color = "#223343"
+
+        # Colors consistent with previous scenes
+        qm_color = RED
+        am_color = MAROON_B
+        gm_color = TEAL
+        hm_color = BLUE_C
+        a_color = WHITE
+        b_color = WHITE
+
+        # Trackers
+        a_value = ValueTracker(4)
+        b_value = ValueTracker(2)
+
+        # Left: vertical number line with moving a, b
+        scale_factor = 0.6
+        number_line_v = (
+            NumberLine(x_range=[0, 5, 1], length=10 * scale_factor, color=WHITE, include_numbers=False)
+            .rotate(PI / 2)
+            .move_to(4.5 * LEFT)
+        )
+        zero_label_v = MathTex("0", color=WHITE).scale(0.8)
+        zero_label_v.next_to(number_line_v.n2p(0), RIGHT, buff=0.2)
+
+        tip_a = always_redraw(
+            lambda: Triangle(color=a_color, fill_opacity=1)
+            .scale(0.15)
+            .rotate(PI / 2)
+            .next_to(number_line_v.n2p(a_value.get_value()), RIGHT, buff=0.25)
+        )
+        tip_b = always_redraw(
+            lambda: Triangle(color=b_color, fill_opacity=1)
+            .scale(0.15)
+            .rotate(PI / 2)
+            .next_to(number_line_v.n2p(b_value.get_value()), RIGHT, buff=0.25)
+        )
+        label_a = always_redraw(lambda: MathTex("a", color=a_color).next_to(tip_a, RIGHT, buff=0.4))
+        label_b = always_redraw(lambda: MathTex("b", color=b_color).next_to(tip_b, RIGHT, buff=0.4))
+
+        left_group = VGroup(number_line_v, zero_label_v, tip_a, tip_b, label_a, label_b)
+
+        # Right: squares anchored at the same bottom-left corner
+        # Pick an anchor that keeps max side (5) on screen: x <= 2.1, y <= -3.1 for top <= ~1.9
+        anchor = 1.6 * RIGHT + 3.6 * DOWN
+
+        def a_len():
+            return float(a_value.get_value())
+
+        def b_len():
+            return float(b_value.get_value())
+
+        def qm_len():
+            a, b = a_value.get_value(), b_value.get_value()
+            return float(np.sqrt((a * a + b * b) / 2.0))
+
+        def am_len():
+            a, b = a_value.get_value(), b_value.get_value()
+            return float(0.5 * (a + b))
+
+        def gm_len():
+            a, b = a_value.get_value(), b_value.get_value()
+            return float(np.sqrt(a * b))
+
+        def hm_len():
+            a, b = a_value.get_value(), b_value.get_value()
+            return float(2.0 * a * b / (a + b)) if (a + b) != 0 else 0.0
+
+        def square_from_length(get_len_fn, color: ManimColor, stroke_width: float = 4, opacity: float = 0.25):
+            return always_redraw(
+                lambda: Square(side_length=get_len_fn())
+                .set_stroke(color=color, width=stroke_width)
+                .set_fill(color=color, opacity=opacity)
+                .move_to(anchor + 0.5 * get_len_fn() * (RIGHT + UP))
+            )
+
+        sq_a = square_from_length(a_len, a_color, stroke_width=5, opacity=0.15)
+        sq_b = square_from_length(b_len, b_color, stroke_width=5, opacity=0.15)
+        sq_qm = square_from_length(qm_len, qm_color)
+        sq_am = square_from_length(am_len, am_color)
+        sq_gm = square_from_length(gm_len, gm_color)
+        sq_hm = square_from_length(hm_len, hm_color)
+
+        # Subtle anchor dot (optional, very faint)
+        anchor_dot = Dot(anchor, color=GREY_A).set_opacity(0.25).scale(0.6)
+
+        right_group = VGroup(anchor_dot, sq_qm, sq_am, sq_gm, sq_hm, sq_a, sq_b)
+
+        # Bring both halves on screen
+        self.play(Create(number_line_v), FadeIn(zero_label_v), FadeIn(tip_a), FadeIn(label_a), FadeIn(tip_b), FadeIn(label_b))
+        self.play(FadeIn(right_group))
+        self.wait(0.6)
+
+        # Animate trackers to show dynamic update
+        self.play(a_value.animate.set_value(2), b_value.animate.set_value(1), run_time=2.5)
+        self.wait(0.4)
+        self.play(a_value.animate.set_value(1), b_value.animate.set_value(3), run_time=2.5)
+        self.wait(0.4)
+        self.play(a_value.animate.set_value(4), b_value.animate.set_value(2), run_time=2.5)
+        self.wait(1.2)
