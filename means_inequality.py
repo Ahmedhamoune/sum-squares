@@ -176,4 +176,29 @@ class MeansInequality(Scene):
             ReplacementTransform(qm_formula, qm_sq),
             run_time=1.2,
         )
+
+        # Compact spacing around the narrow 'ab' term for better overall layout
+        base_buff = 0.6
+        tight_buff = 0.2
+        elements = [b_tok, lt1, hm_sq, lt2, gm_sq, lt3, am_sq, lt4, qm_sq, lt5, a_tok]
+
+        # Build dummies to compute target positions with non-uniform buffers
+        dummies = [m.copy() for m in elements]
+        dummies[0].move_to(ORIGIN)
+        for i in range(1, len(dummies)):
+            left = dummies[i - 1]
+            cur = dummies[i]
+            # Use tighter spacing for (lt2, gm_sq) and (gm_sq, lt3)
+            if (dummies[i - 1] is dummies[3] and cur is dummies[4]) or (dummies[i - 1] is dummies[4] and cur is dummies[5]):
+                cur.next_to(left, RIGHT, buff=tight_buff)
+            else:
+                cur.next_to(left, RIGHT, buff=base_buff)
+        dummy_group = VGroup(*dummies).move_to(ORIGIN)
+
+        # Animate real elements to dummy target positions
+        for m, target in zip(elements, dummies):
+            m.generate_target()
+            m.target.move_to(target.get_center())
+        self.play(*[MoveToTarget(m) for m in elements], run_time=0.8)
+
         self.wait(2.0)
