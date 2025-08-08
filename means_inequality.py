@@ -80,6 +80,9 @@ class MeansInequality(Scene):
             FadeIn(tip_qm), FadeIn(tip_am), FadeIn(tip_gm), FadeIn(tip_hm),
         )
         self.wait(0.6)
+        assumption = Tex(r"Assume $a \\ge b$ (symmetry)", color=WHITE).scale(0.7).to_corner(DR)
+        assumption.set_opacity(0.5)
+        self.play(FadeIn(assumption, shift=0.2 * UP))
 
         # 2) Transform to inequality chain: b < HM < GM < AM < QM < a
         b_tok = MathTex("b", color=WHITE)
